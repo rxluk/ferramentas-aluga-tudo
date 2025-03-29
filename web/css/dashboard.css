@@ -1,0 +1,185 @@
+/* Estilos específicos para o dashboard */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 16px;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.icon-equipments {
+    background-color: var(--secondary-color);
+}
+
+.icon-cargos {
+    background-color: var(--success-color);
+}
+
+.icon-missing {
+    background-color: var(--warning-color);
+}
+
+.icon-value {
+    background-color: var(--accent-color);
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* Estatísticas em formato de gráfico */
+.stats-container {
+    margin-top: 15px;
+}
+
+.stat-bar {
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    height: 100%;
+    background-color: var(--secondary-color);
+}
+
+.stat-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Tabelas recentes */
+.recent-table {
+    margin-top: 15px;
+}
+
+.recent-table th {
+    font-size: 14px;
+}
+
+.recent-table td {
+    font-size: 13px;
+}
+
+/* Mini gráficos de tendência */
+.trend-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.trend-bar {
+    flex: 1;
+    margin: 0 1px;
+    background-color: var(--secondary-color);
+    opacity: 0.7;
+}
+
+.trend-bar:hover {
+    opacity: 1;
+}
+
+/* Indicadores de status */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-green {
+    background-color: var(--success-color);
+}
+
+.status-yellow {
+    background-color: var(--warning-color);
+}
+
+.status-red {
+    background-color: var(--accent-color);
+}
+
+/* Resumo por categoria */
+.category-summary {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.category-item {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 10px;
+}
+
+.category-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.category-label {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .card-value {
+        font-size: 24px;
+    }
+}

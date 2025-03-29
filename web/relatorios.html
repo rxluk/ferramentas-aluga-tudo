@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugue Tudo - Relatórios</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/relatorios.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h2>Alugue Tudo</h2>
+            <p>Sistema de Gerenciamento</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">Dashboard</a>
+            <a href="equipamentos.html" class="menu-item">Equipamentos</a>
+            <a href="cargos.html" class="menu-item">Cargos</a>
+            <a href="funcionarios.html" class="menu-item">Funcionários</a>
+            <a href="relatorios.html" class="menu-item active">Relatórios</a>
+            <a href="login.html" class="menu-item">Sair</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Relatórios</h1>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-name">Admin</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h3 class="section-title">Gerar Relatórios</h3>
+            </div>
+            <div class="relatorios-grid">
+                <div class="relatorio-card" id="relatorio-equipamentos">
+                    <div class="relatorio-icon">
+                        <i class="icon-tools"></i>
+                    </div>
+                    <div class="relatorio-info">
+                        <h4>Inventário de Equipamentos</h4>
+                        <p>Lista completa de todos os equipamentos, valores e status.</p>
+                    </div>
+                    <div class="relatorio-actions">
+                        <button class="btn">Gerar Relatório</button>
+                    </div>
+                </div>
+                
+                <div class="relatorio-card" id="relatorio-funcionarios">
+                    <div class="relatorio-icon">
+                        <i class="icon-users"></i>
+                    </div>
+                    <div class="relatorio-info">
+                        <h4>Funcionários e Equipamentos</h4>
+                        <p>Relatório de equipamentos atribuídos a cada funcionário.</p>
+                    </div>
+                    <div class="relatorio-actions">
+                        <button class="btn">Gerar Relatório</button>
+                    </div>
+                </div>
+                
+                <div class="relatorio-card" id="relatorio-faltantes">
+                    <div class="relatorio-icon">
+                        <i class="icon-alert"></i>
+                    </div>
+                    <div class="relatorio-info">
+                        <h4>Equipamentos Faltantes</h4>
+                        <p>Lista de equipamentos que faltam para cada funcionário.</p>
+                    </div>
+                    <div class="relatorio-actions">
+                        <button class="btn">Gerar Relatório</button>
+                    </div>
+                </div>
+                
+                <div class="relatorio-card" id="relatorio-valores">
+                    <div class="relatorio-icon">
+                        <i class="icon-money"></i>
+                    </div>
+                    <div class="relatorio-info">
+                        <h4>Valores por Cargo</h4>
+                        <p>Análise de valores de equipamentos por cargo.</p>
+                    </div>
+                    <div class="relatorio-actions">
+                        <button class="btn">Gerar Relatório</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Relatório de Equipamentos -->
+        <div class="section" id="resultado-equipamentos" style="display: none;">
+            <div class="section-header">
+                <h3 class="section-title">Inventário de Equipamentos</h3>
+                <div class="export-options">
+                    <button class="btn" id="export-pdf">Exportar PDF</button>
+                    <button class="btn" id="export-excel">Exportar Excel</button>
+                    <button class="btn" id="print-report">Imprimir</button>
+                </div>
+            </div>
+            <div class="relatorio-filtros">
+                <div class="filtro-item">
+                    <label for="filtro-cargo">Cargo:</label>
+                    <select id="filtro-cargo" class="filter-select">
+                        <option value="">Todos</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <div class="filtro-item">
+                    <label for="filtro-status">Status:</label>
+                    <select id="filtro-status" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="disponivel">Disponível</option>
+                        <option value="atribuido">Atribuído</option>
+                    </select>
+                </div>
+                <button class="btn" id="aplicar-filtros">Aplicar Filtros</button>
+            </div>
+            <div class="report-container" id="report-equipamentos">
+                <h2 class="report-title">Inventário de Equipamentos - Alugue Tudo</h2>
+                <p class="report-date">Data: <span id="current-date"></span></p>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Valor</th>
+                            <th>Quantidade</th>
+                            <th>Valor Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="relatorio-equipamentos-table">
+                        <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Total</strong></td>
+                            <td id="total-valor-unitario"></td>
+                            <td id="total-quantidade"></td>
+                            <td id="total-valor-total"></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Relatório de Funcionários e Equipamentos -->
+        <div class="section" id="resultado-funcionarios" style="display: none;">
+            <div class="section-header">
+                <h3 class="section-title">Funcionários e Equipamentos</h3>
+                <div class="export-options">
+                    <button class="btn" id="export-pdf-func">Exportar PDF</button>
+                    <button class="btn" id="export-excel-func">Exportar Excel</button>
+                    <button class="btn" id="print-report-func">Imprimir</button>
+                </div>
+            </div>
+            <div class="relatorio-filtros">
+                <div class="filtro-item">
+                    <label for="filtro-cargo-func">Cargo:</label>
+                    <select id="filtro-cargo-func" class="filter-select">
+                        <option value="">Todos</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <div class="filtro-item">
+                    <label for="filtro-completo">Status:</label>
+                    <select id="filtro-completo" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="completo">Equipamentos Completos</option>
+                        <option value="incompleto">Equipamentos Faltantes</option>
+                    </select>
+                </div>
+                <button class="btn" id="aplicar-filtros-func">Aplicar Filtros</button>
+            </div>
+            <div class="report-container" id="report-funcionarios">
+                <h2 class="report-title">Funcionários e Equipamentos - Alugue Tudo</h2>
+                <p class="report-date">Data: <span id="current-date-func"></span></p>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Funcionário</th>
+                            <th>Cargo</th>
+                            <th>Equipamentos Atribuídos</th>
+                            <th>Equipamentos Faltantes</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="relatorio-funcionarios-table">
+                        <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/relatorios.js"></script>
+</body>
+</html>

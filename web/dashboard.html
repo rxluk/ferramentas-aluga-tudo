@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugue Tudo - Dashboard</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h2>Alugue Tudo</h2>
+            <p>Sistema de Gerenciamento</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item active" data-tab="dashboard">Dashboard</a>
+            <a href="#" class="menu-item" data-tab="equipamentos">Equipamentos</a>
+            <a href="#" class="menu-item" data-tab="cargos">Cargos</a>
+            <a href="#" class="menu-item" data-tab="funcionarios">Funcionários</a>
+            <a href="#" class="menu-item" data-tab="relatorios">Relatórios</a>
+            <a href="login.html" class="menu-item">Sair</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-name">Admin</div>
+            </div>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="tab-content active" id="dashboard-tab">
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Total de Equipamentos</h3>
+                        <div class="card-icon icon-equipments">E</div>
+                    </div>
+                    <div class="card-value">152</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Cargos Cadastrados</h3>
+                        <div class="card-icon icon-cargos">C</div>
+                    </div>
+                    <div class="card-value">12</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Equipamentos Faltantes</h3>
+                        <div class="card-icon icon-missing">F</div>
+                    </div>
+                    <div class="card-value">24</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Valor Total</h3>
+                        <div class="card-icon icon-value">R$</div>
+                    </div>
+                    <div class="card-value">R$ 45.320</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Equipamentos Recentes</h3>
+                    <button class="btn" id="add-equipamento-btn">Adicionar Equipamento</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Valor</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Furadeira Profissional</td>
+                            <td>Técnico</td>
+                            <td>R$ 450,00</td>
+                            <td>10</td>
+                            <td>
+                                <button class="action-btn edit">Editar</button>
+                                <button class="action-btn delete">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Serra Circular</td>
+                            <td>Técnico</td>
+                            <td>R$ 680,00</td>
+                            <td>5</td>
+                            <td>
+                                <button class="action-btn edit">Editar</button>
+                                <button class="action-btn delete">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Kit de Chaves</td>
+                            <td>Auxiliar</td>
+                            <td>R$ 120,00</td>
+                            <td>15</td>
+                            <td>
+                                <button class="action-btn edit">Editar</button>
+                                <button class="action-btn delete">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="tab-content" id="equipamentos-tab">
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Gerenciamento de Equipamentos</h3>
+                    <button class="btn" id="add-equipamento-btn2">Adicionar Equipamento</button>
+                </div>
+                <div class="search-filters">
+                    <input type="text" class="filter-input" placeholder="Buscar equipamento...">
+                    <select class="filter-select">
+                        <option value="">Todos os cargos</option>
+                        <option value="tecnico">Técnico</option>
+                        <option value="auxiliar">Auxiliar</option>
+                        <option value="supervisor">Supervisor</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">Todos os status</option>
+                        <option value="disponivel">Disponível</option>
+                        <option value="atribuido">Atribuído</option>
+                    </select>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Valor</th>
+                            <th>Quantidade</th>
+                            <th>Dono Atual</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="equipamentos-table">
+                        <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="tab-content" id="cargos-tab">
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Gerenciamento de Cargos</h3>
+                    <button class="btn" id="add-cargo-btn">Adicionar Cargo</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Cargo</th>
+                            <th>Descrição</th>
+                            <th>Total de Equipamentos</th>
+                            <th>Funcionários</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cargos-table">
+                        <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="tab-content" id="funcionarios-tab">
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Gerenciamento de Funcionários</h3>
+                    <button class="btn" id="add-funcionario-btn">Adicionar Funcionário</button>
+                </div>
+                <div class="search-filters">
+                    <input type="text" class="filter-input" placeholder="Buscar funcionário...">
+                    <select class="filter-select">
+                        <option value="">Todos os cargos</option>
+                        <option value="tecnico">Técnico</option>
+                        <option value="auxiliar">Auxiliar</option>
+                        <option value="supervisor">Supervisor</option>
+                    </select>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Equipamentos Atribuídos</th>
+                            <th>Equipamentos Faltantes</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="funcionarios-table">
+                        <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="tab-content" id="relatorios-tab">
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Relatórios e Análises</h3>
+                </div>
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Funcionários com Todos Equipamentos</h3>
+                        </div>
+                        <div class="card-value">35%</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Equipamentos Disponíveis</h3>
+                        </div>
+                        <div class="card-value">42</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Valor Médio por Equipamento</h3>
+                        </div>
+                        <div class="card-value">R$ 298</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total de Funcionários</h3>
+                        </div>
+                        <div class="card-value">68</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Cadastro de Equipamento -->
+    <div class="modal" id="equipamento-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro de Equipamento</h2>
+            <form id="equipamento-form">
+                <div class="form-group">
+                    <label for="equip-nome">Nome do Equipamento</label>
+                    <input type="text" id="equip-nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-cargo">Cargo Associado</label>
+                    <select id="equip-cargo" class="form-control" required>
+                        <option value="">Selecione um cargo</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="equip-valor">Valor (R$)</label>
+                    <input type="number" id="equip-valor" class="form-control" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-quantidade">Quantidade</label>
+                    <input type="number" id="equip-quantidade" class="form-control" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-specs">Especificações</label>
+                    <textarea id="equip-specs" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de Cadastro de Cargo -->
+    <div class="modal" id="cargo-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro de Cargo</h2>
+            <form id="cargo-form">
+                <div class="form-group">
+                    <label for="cargo-nome">Nome do Cargo</label>
+                    <input type="text" id="cargo-nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="cargo-descricao">Descrição</label>
+                    <textarea id="cargo-descricao" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de Cadastro de Funcionário -->
+    <div class="modal" id="funcionario-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro de Funcionário</h2>
+            <form id="funcionario-form">
+                <div class="form-group">
+                    <label for="func-nome">Nome do Funcionário</label>
+                    <input type="text" id="func-nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="func-cargo">Cargo</label>
+                    <select id="func-cargo" class="form-control" required>
+                        <option value="">Selecione um cargo</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="func-email">Email</label>
+                    <input type="email" id="func-email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="func-telefone">Telefone</label>
+                    <input type="text" id="func-telefone" class="form-control">
+                </div>
+                <button type="submit" class="btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugue Tudo - Cargos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cargos.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h2>Alugue Tudo</h2>
+            <p>Sistema de Gerenciamento</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">Dashboard</a>
+            <a href="equipamentos.html" class="menu-item">Equipamentos</a>
+            <a href="cargos.html" class="menu-item active">Cargos</a>
+            <a href="funcionarios.html" class="menu-item">Funcionários</a>
+            <a href="relatorios.html" class="menu-item">Relatórios</a>
+            <a href="login.html" class="menu-item">Sair</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Cargos</h1>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-name">Admin</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h3 class="section-title">Gerenciamento de Cargos</h3>
+                <button class="btn" id="add-cargo-btn">Adicionar Cargo</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Cargo</th>
+                        <th>Descrição</th>
+                        <th>Total de Equipamentos</th>
+                        <th>Funcionários</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="cargos-table">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section" id="detalhe-cargo" style="display: none;">
+            <div class="section-header">
+                <h3 class="section-title">Detalhes do Cargo</h3>
+                <button class="btn" id="voltar-btn">Voltar</button>
+            </div>
+            <div class="cargo-info">
+                <div class="info-row">
+                    <div class="info-label">Nome:</div>
+                    <div class="info-value" id="detalhe-nome"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Descrição:</div>
+                    <div class="info-value" id="detalhe-descricao"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Total de Funcionários:</div>
+                    <div class="info-value" id="detalhe-funcionarios"></div>
+                </div>
+            </div>
+            
+            <div class="section-header mt-20">
+                <h3 class="section-title">Equipamentos Necessários</h3>
+                <button class="btn" id="add-equipamento-cargo-btn">Adicionar Equipamento</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Especificação</th>
+                        <th>Valor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="equipamentos-cargo">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+            
+            <div class="section-header mt-20">
+                <h3 class="section-title">Funcionários com este Cargo</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Equipamentos</th>
+                    </tr>
+                </thead>
+                <tbody id="funcionarios-cargo">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal de Cadastro de Cargo -->
+    <div class="modal" id="cargo-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro de Cargo</h2>
+            <form id="cargo-form">
+                <div class="form-group">
+                    <label for="cargo-nome">Nome do Cargo</label>
+                    <input type="text" id="cargo-nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="cargo-descricao">Descrição</label>
+                    <textarea id="cargo-descricao" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de Adição de Equipamento ao Cargo -->
+    <div class="modal" id="equipamento-cargo-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Adicionar Equipamento ao Cargo</h2>
+            <form id="equipamento-cargo-form">
+                <div class="form-group">
+                    <label for="equipamento-select">Equipamento</label>
+                    <select id="equipamento-select" class="form-control" required>
+                        <option value="">Selecione um equipamento</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <button type="submit" class="btn">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cargos.js"></script>
+</body>
+</html>

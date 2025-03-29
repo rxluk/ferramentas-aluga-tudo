@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugue Tudo - Equipamentos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/equipamentos.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h2>Alugue Tudo</h2>
+            <p>Sistema de Gerenciamento</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">Dashboard</a>
+            <a href="equipamentos.html" class="menu-item active">Equipamentos</a>
+            <a href="cargos.html" class="menu-item">Cargos</a>
+            <a href="funcionarios.html" class="menu-item">Funcionários</a>
+            <a href="relatorios.html" class="menu-item">Relatórios</a>
+            <a href="login.html" class="menu-item">Sair</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Equipamentos</h1>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-name">Admin</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h3 class="section-title">Gerenciamento de Equipamentos</h3>
+                <button class="btn" id="add-equipamento-btn">Adicionar Equipamento</button>
+            </div>
+            <div class="search-filters">
+                <input type="text" class="filter-input" id="search-input" placeholder="Buscar equipamento...">
+                <select class="filter-select" id="filter-cargo">
+                    <option value="">Todos os cargos</option>
+                    <!-- Opções serão carregadas via JavaScript -->
+                </select>
+                <select class="filter-select" id="filter-status">
+                    <option value="">Todos os status</option>
+                    <option value="disponivel">Disponível</option>
+                    <option value="atribuido">Atribuído</option>
+                </select>
+                <button class="btn" id="filter-btn">Filtrar</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Valor</th>
+                        <th>Quantidade</th>
+                        <th>Dono Atual</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="equipamentos-table">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section" id="detalhe-equipamento" style="display: none;">
+            <div class="section-header">
+                <h3 class="section-title">Detalhes do Equipamento</h3>
+                <button class="btn" id="voltar-btn">Voltar</button>
+            </div>
+            <div class="equipamento-info">
+                <div class="info-row">
+                    <div class="info-label">Nome:</div>
+                    <div class="info-value" id="detalhe-nome"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Cargo:</div>
+                    <div class="info-value" id="detalhe-cargo"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Valor:</div>
+                    <div class="info-value" id="detalhe-valor"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Quantidade:</div>
+                    <div class="info-value" id="detalhe-quantidade"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Especificações:</div>
+                    <div class="info-value" id="detalhe-specs"></div>
+                </div>
+            </div>
+            
+            <div class="section-header mt-20">
+                <h3 class="section-title">Funcionários que Utilizam este Equipamento</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody id="funcionarios-equipamento">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal de Cadastro de Equipamento -->
+    <div class="modal" id="equipamento-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro de Equipamento</h2>
+            <form id="equipamento-form">
+                <div class="form-group">
+                    <label for="equip-nome">Nome do Equipamento</label>
+                    <input type="text" id="equip-nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-cargo">Cargo Associado</label>
+                    <select id="equip-cargo" class="form-control" required>
+                        <option value="">Selecione um cargo</option>
+                        <!-- Opções serão carregadas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="equip-valor">Valor (R$)</label>
+                    <input type="number" id="equip-valor" class="form-control" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-quantidade">Quantidade</label>
+                    <input type="number" id="equip-quantidade" class="form-control" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="equip-specs">Especificações</label>
+                    <textarea id="equip-specs" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/equipamentos.js"></script>
+</body>
+</html>
